@@ -1,0 +1,16 @@
+<template name="layout">
+  <nav>
+    <div class="nav-wrapper blue-grey lighten-5">
+      <a href="/" class="brand-logo"><img class="logo" src="/img/logo.png"></a>
+      <ul id="nav-mobile" class="nav-links right hide-on-med-and-down">
+        <li><a href="/services">Services</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    {{> yield}}
+  </div>
+</template>
