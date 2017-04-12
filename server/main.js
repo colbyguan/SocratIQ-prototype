@@ -1,5 +1,4 @@
-import { Meteor } from 'meteor/meteor';
-
-Meteor.startup(() => {
-  // code to run on server at startup
-});
+import '../imports/api/students.js'
+import '../imports/api/mentors.js'
+import '../imports/api/parents.js'
+import '../imports/api/matches.js'

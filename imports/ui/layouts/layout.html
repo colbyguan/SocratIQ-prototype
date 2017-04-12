@@ -1,16 +1,41 @@
 <template name="layout">
-  <nav>
+  <nav class="title">
     <div class="nav-wrapper blue-grey lighten-5">
-      <a href="/" class="brand-logo"><img class="logo" src="/img/logo.png"></a>
+      <a href="/" class="brand-logo center"><img class="logo" src="/img/logo.png"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="black-text material-icons">menu</i></a>
+      {{#if currentUser}}
+      <ul id="nav-mobile" class="nav-links left hide-on-med-and-down">
+        <li><a href="/dashboard">Dashboard</a></li>
+      </ul>
+      {{/if}}
       <ul id="nav-mobile" class="nav-links right hide-on-med-and-down">
         <li><a href="/services">Services</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/about">About</a></li>
+        {{#if currentUser}}
+        <li><a id="logout" href="#">({{username}}) Log out</a></li>
+        {{else}}
         <li><a href="/signup">Sign Up</a></li>
+        {{/if}}
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        {{#if currentUser}}
+        <li><a href="/dashboard">Dashboard</a></li>
+        {{/if}}
+        <li><a href="/services">Services</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/about">About</a></li>
+        {{#if currentUser}}
+        <li><a id="logout" href="#">({{username}}) Log out</a></li>
+        {{else}}
+        <li><a href="/signup">Sign Up</a></li>
+        {{/if}}
       </ul>
     </div>
   </nav>
   <div class="container">
-    {{> yield}}
+    <div class="content">
+      {{> yield}}
+    </div>
   </div>
 </template>
