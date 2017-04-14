@@ -1,0 +1,60 @@
+ <template name="mentor_form">
+   <div class="section">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title title">Mentor Form</span>
+        <form>
+          <div class="row">
+            <div class="input-field col s12">
+              <select id="mentor-year">
+                <option value="" disabled selected>Choose a year</option>
+                <option value="1st">1st year (Freshman)</option>
+                <option value="2nd">2nd year (Sophomore)</option>
+                <option value="3rd">3rd year (Junior)</option>
+                <option value="4th">4th year (Senior)</option>
+              </select>
+              <label>Year</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="mentor-interest" type="text" class="validate">
+              <label for="interest">(Intended) Major eg. Biology, History, ...</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="mentor-zip" type="number" class="validate">
+              <label for="zip">ZIP Code</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="mentor-inst" type="text" class="validate">
+              <label for="zip">Institution</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12" id="mentor-services">
+              <p>Services you can provide:</p>
+              <p>
+                <input name="admissions" type="checkbox" id="admissions" />
+                <label for="admissions">Admissions Mentorship</label>
+              </p>
+              <p>
+                <input name="exam" type="checkbox" id="exam" />
+                <label for="exam">SAT / ACT Prep</label>
+              </p>
+              <p>
+                <input name="essay" type="checkbox" id="essay" />
+                <label for="essay">Essay Editing</label>
+              </p>
+            </div>
+          </div>
+          <br>
+          <a id="submit-mentor" class="waves-effect waves-light btn">Submit</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>

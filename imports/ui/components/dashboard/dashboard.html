@@ -1,4 +1,5 @@
 <template name="dashboard">
+  {{#if showWelcome}}
   <div class="section">
     <div class="row">
       <div class="card blue">
@@ -6,12 +7,19 @@
           <span class="card-title title">Welcome to the SocratIQ community!</span>
           <br><p>I am joining as a: </p><br>
           <div class="roles">
-            <a class="blue darken-3 waves-effect waves-light btn-large">Student</a>
-            <a class="green waves-effect waves-light btn-large">Mentor</a>
-            <a class="red lighten-2 waves-effect waves-light btn-large">Parent</a>
+            <a id="show-student" class="blue darken-3 waves-effect waves-light btn-large">Student</a>
+            <a id="show-mentor" class="green waves-effect waves-light btn-large">Mentor</a>
+            <a id="show-parent" class="red lighten-2 waves-effect waves-light btn-large">Parent</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  {{/if}}
+  {{#if showStudentForm}}
+    {{> student_form}}
+  {{/if}}
+  {{#if showMentorForm}}
+    {{> mentor_form}}
+  {{/if}}
 </template>

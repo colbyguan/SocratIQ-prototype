@@ -1,0 +1,36 @@
+ <template name="student_form">
+   <div class="section">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title title">Student Form</span>
+        <form>
+          <div class="row">
+            <div class="input-field col s12">
+              <select id="student-year">
+                <option value="" disabled selected>Choose a year</option>
+                <option value="1st">1st year (Freshman)</option>
+                <option value="2nd">2nd year (Sophomore)</option>
+                <option value="3rd">3rd year (Junior)</option>
+                <option value="4th">4th year (Senior)</option>
+              </select>
+              <label>Year</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="student-interest" type="text" class="validate">
+              <label for="interest">Field of Interest (eg. Biology, History)</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="student-zip" type="number" class="validate">
+              <label for="zip">ZIP Code</label>
+            </div>
+          </div>
+          <a id="submit-student" class="waves-effect waves-light btn">Submit</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
