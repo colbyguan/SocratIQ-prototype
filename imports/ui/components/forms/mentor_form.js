@@ -11,7 +11,7 @@ Template.mentor_form.events({
     const $year = $('#mentor-year');
     const $interest = $('#mentor-interest');
     const $zip = $('#mentor-zip');
-    const $inst = $('#mentor-zip');
+    const $inst = $('#mentor-inst');
     const services = [];
     $('#mentor-services input:checked').each(function() {
       services.push($(this).attr('name'));

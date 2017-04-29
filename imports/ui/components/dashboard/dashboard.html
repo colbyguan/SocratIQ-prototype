@@ -16,10 +16,28 @@
     </div>
   </div>
   {{/if}}
+  <div class="section">
   {{#if showStudentForm}}
     {{> student_form}}
   {{/if}}
   {{#if showMentorForm}}
     {{> mentor_form}}
   {{/if}}
+  {{#if studentMode}}
+    <div class="row">
+      <div class="col s6">
+        <h5>Available Mentors</h5>
+        {{#each mentor in openMentors}}
+          {{> mentor_row mentor=mentor}}
+        {{/each}}
+      </div>
+      <div class="col s6">
+        <h5>Requested Mentors</h5>
+        {{#each mentor in requestedMentors}}
+          {{> mentor_row mentor=mentor requested=true}}
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+  </div>
 </template>

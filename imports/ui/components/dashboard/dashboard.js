@@ -2,18 +2,21 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Students } from '../../../api/students.js';
 import { Mentors } from '../../../api/mentors.js';
+import { Matches } from '../../../api/matches.js';
 import { Parents } from '../../../api/parents.js';
 
 import './dashboard.html';
 import './dashboard.css';
 import '../forms/student_form.js';
 import '../forms/mentor_form.js';
+import './mentor_row.js';
 
 Template.dashboard.onCreated(function() {
   this.showWelcome = new ReactiveVar(false);
   this.showStudentForm = new ReactiveVar(false);
   this.showMentorForm = new ReactiveVar(false);
   this.showParentForm = new ReactiveVar(false);
+  this.studentMode = new ReactiveVar(false);
   this.nullCount = 0;
   const self = this;
   const user_id = Meteor.userId();
@@ -21,6 +24,8 @@ Template.dashboard.onCreated(function() {
   Meteor.subscribe('students', function() {
     if (!Students.findOne({user_id})) {
       incrNullCount(self);
+    } else {
+      self.studentMode.set(true);
     }
   });
   Meteor.subscribe('mentors', function() {
@@ -33,6 +38,7 @@ Template.dashboard.onCreated(function() {
       incrNullCount(self);
     }
   });
+  Meteor.subscribe('matches');
 });
 
 function incrNullCount(instance) {
@@ -52,6 +58,25 @@ Template.dashboard.helpers({
   showMentorForm() {
     return Template.instance().showMentorForm.get();
   },
+  studentMode() {
+    return Template.instance().studentMode.get();
+  },
+  openMentors() {
+    return Mentors.find().fetch().filter(function(mentor) {
+      return !Matches.findOne({
+        student_id: Meteor.userId(),
+        mentor_id: mentor.user_id
+      });
+    });
+  },
+  requestedMentors() {
+    return Mentors.find().fetch().filter(function(mentor) {
+      return !!Matches.findOne({
+        student_id: Meteor.userId(),
+        mentor_id: mentor.user_id
+      });
+    });
+  }
 });
 
 Template.dashboard.events({

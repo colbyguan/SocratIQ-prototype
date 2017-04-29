@@ -12,11 +12,6 @@
 .nav-links a {
   color: #212121;
 }
-.container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
 .content {
   max-width: 900px;
 }

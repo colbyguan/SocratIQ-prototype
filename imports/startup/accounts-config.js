@@ -22,7 +22,12 @@ AccountsTemplates.addFields([
 ]);
 
 AccountsTemplates.configure({
-  onSubmitHook: function() {
-    Router.go('/dashboard');
+  onSubmitHook: function(err) {
+    if (!err) {
+      Router.go('/dashboard');
+    }
+  },
+  onLogoutHook: function() {
+    Router.go('/');
   }
 });

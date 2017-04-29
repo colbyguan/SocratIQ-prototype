@@ -1,3 +1,4 @@
+import { Router } from 'meteor/iron:router';
 import './layout.html';
 import './layout.css';
 
@@ -12,8 +13,9 @@ Template.layout.helpers({
 });
 
 Template.layout.events({
-  'click #logout'() {
-    AccountsTemplates.logout();
+  'click #logout'(event) {
+    event.preventDefault();
     Router.go('/');
+    AccountsTemplates.logout();
   }
 });

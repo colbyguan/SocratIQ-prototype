@@ -22,9 +22,8 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  'students.new'({user_id, year, field, zip}) {
+  'students.new'({year, field, zip}) {
     requireLogin(Meteor.userId());
-    check(user_id, String);
     check(year, String);
     check(field, String);
     check(zip, Match.Integer);
