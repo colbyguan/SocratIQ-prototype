@@ -3,9 +3,10 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title title">Mentor Form</span>
+        <h6>(* Required field)</h6>
         <form>
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 m4">
               <select id="mentor-year">
                 <option value="" disabled selected>Choose a year</option>
                 <option value="1st">1st year (Freshman)</option>
@@ -13,30 +14,26 @@
                 <option value="3rd">3rd year (Junior)</option>
                 <option value="4th">4th year (Senior)</option>
               </select>
-              <label>Year</label>
+              <label>*Year</label>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 m4">
               <input id="mentor-interest" type="text" class="validate">
-              <label for="interest">(Intended) Major eg. Biology, History, ...</label>
+              <label for="interest">*(Intended) Major eg. Biology, History, ...</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <input id="mentor-inst" type="text" class="validate">
+              <label for="zip">*Institution</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <input id="mentor-zip" type="number" class="validate">
-              <label for="zip">ZIP Code</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="mentor-inst" type="text" class="validate">
-              <label for="zip">Institution</label>
+              <label for="zip">*ZIP Code</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12" id="mentor-services">
-              <p>Services you can provide:</p>
+              <p>*Services you can provide:</p>
               <p>
                 <input name="admissions" type="checkbox" id="admissions" />
                 <label for="admissions">Admissions Mentorship</label>
@@ -52,6 +49,34 @@
             </div>
           </div>
           <br>
+          <div class="row"><a id="show-optional" class="waves-effect waves-teal btn-flat">Toggle optional fields</a></div>
+          {{#if showOptional}}
+          <div class="row">
+            <div class="input-field col s12 m4">
+              <select id="mentor-gender">
+                <option value="" disabled selected>Choose a gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="neutral">Neutral</option>
+                <option value="other">Other</option>
+              </select>
+              <label>I'd prefer a student who is:</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <select id="mentor-same-eth">
+                <option value="" disabled selected>Choose a preference</option>
+                <option value="agree">Agree</option>
+                <option value="disagree">Disagree</option>
+                <option value="neutral">Neutral</option>
+              </select>
+              <label>I'd prefer a student who is of the same race/ethnicity as me:</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <input id="mentor-eth" type="text" class="validate">
+              <label for="zip">Race/ethnicity, if relevant?</label>
+            </div>
+          </div>
+          {{/if}}
           <a id="submit-mentor" class="waves-effect waves-light btn">Submit</a>
         </form>
       </div>

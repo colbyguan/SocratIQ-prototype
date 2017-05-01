@@ -26,19 +26,20 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  'mentors.new'({year, major, zip, institution, services}) {
+  'mentors.new'({year, major, zip, institution, services, extras}) {
     requireLogin(Meteor.userId());
     check(year, String);
     check(major, String);
     check(zip, Match.Integer);
     check(institution, String);
     check(services, Array);
+    check(extras, Object);
 
     if (!Mentors.findOne({user_id: Meteor.userId()})) {
       Meteor.users.update({_id: Meteor.userId()}, {$set: {role: 'mentor'}});
 
       return Mentors.insert({
-        user_id: Meteor.userId(), name: Meteor.user().username, year, major, zip, institution, services
+        user_id: Meteor.userId(), name: Meteor.user().username, year, major, zip, institution, services, extras
       });
     } else {
       throw new Meteor.Error('Already signed up as mentor');
