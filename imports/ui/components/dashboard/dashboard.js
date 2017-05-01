@@ -3,7 +3,6 @@ import { Template } from 'meteor/templating';
 import { Students } from '../../../api/students.js';
 import { Mentors } from '../../../api/mentors.js';
 import { Matches } from '../../../api/matches.js';
-import { Parents } from '../../../api/parents.js';
 
 import './dashboard.html';
 import './dashboard.css';
@@ -16,7 +15,6 @@ Template.dashboard.onCreated(function() {
   this.showWelcome = new ReactiveVar(false);
   this.showStudentForm = new ReactiveVar(false);
   this.showMentorForm = new ReactiveVar(false);
-  this.showParentForm = new ReactiveVar(false);
   this.studentMode = new ReactiveVar(false);
   this.nullCount = 0;
   const self = this;
@@ -34,17 +32,12 @@ Template.dashboard.onCreated(function() {
       incrNullCount(self);
     }
   });
-  Meteor.subscribe('parents', function() {
-    if (!Parents.findOne({user_id})) {
-      incrNullCount(self);
-    }
-  });
   Meteor.subscribe('matches');
 });
 
 function incrNullCount(instance) {
   instance.nullCount += 1;
-  if (instance.nullCount === 3) {
+  if (instance.nullCount === 2) {
     instance.showWelcome.set(true);
   }
 }
