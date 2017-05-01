@@ -10,6 +10,7 @@ import './dashboard.css';
 import '../forms/student_form.js';
 import '../forms/mentor_form.js';
 import './mentor_row.js';
+import './student_row.js';
 
 Template.dashboard.onCreated(function() {
   this.showWelcome = new ReactiveVar(false);
@@ -75,6 +76,20 @@ Template.dashboard.helpers({
         student_id: Meteor.userId(),
         mentor_id: mentor.user_id
       });
+    });
+  },
+  requestedStudents() {
+    return Matches.find({mentor_id: Meteor.userId()}).fetch().filter(function(match) {
+      return match.status === 'requested';
+    }).map(function(match) {
+      return Students.findOne({user_id: match.student_id});
+    });
+  },
+  matchedStudents() {
+    return Matches.find({mentor_id: Meteor.userId()}).fetch().filter(function(match) {
+      return match.status === 'matched';
+    }).map(function(match) {
+      return Students.findOne({user_id: match.student_id});
     });
   }
 });

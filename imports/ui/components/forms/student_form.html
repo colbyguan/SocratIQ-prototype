@@ -28,6 +28,64 @@
               <label for="zip">ZIP Code</label>
             </div>
           </div>
+          <div class="row"><a id="show-optional" class="waves-effect waves-teal btn-flat">Toggle optional fields</a></div>
+          {{#if showOptional}}
+          <div class="row">
+            <div class="input-field col s12 m4">
+              <select id="student-gender">
+                <option value="" disabled selected>Choose a gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="neutral">Neutral</option>
+                <option value="other">Other</option>
+              </select>
+              <label>I'd prefer a mentor who is:</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <select id="student-same-eth">
+                <option value="" disabled selected>Choose a preference</option>
+                <option value="agree">Agree</option>
+                <option value="disagree">Disagree</option>
+                <option value="neutral">Neutral</option>
+              </select>
+              <label>I'd prefer a mentor who is of the same race/ethnicity as me:</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <input id="student-eth" type="text" class="validate">
+              <label for="zip">Race/ethnicity, if relevant?</label>
+            </div>
+          </div>
+           <div class="row">
+            <div class="input-field col s12" id="student-areas">
+              <p>Which areas do you need support in?</p>
+              <p>
+                <input name="SAT" type="checkbox" id="area1" />
+                <label for="area1">SAT</label>
+              </p>
+              <p>
+                <input name="SAT-subject" type="checkbox" id="area2" />
+                <label for="area2">SAT Subject</label>
+              </p>
+              <p>
+                <input name="ACT" type="checkbox" id="area3" />
+                <label for="area3">ACT</label>
+              </p>
+              <p>
+                <input name="college-application-essay" type="checkbox" id="area4" />
+                <label for="area4">College application essay</label>
+              </p>
+              <p>
+                <input name="choice-of-college" type="checkbox" id="area5" />
+                <label for="area5">Guidance on college choice</label>
+              </p>
+              <p>
+                <input name="choice-of-major" type="checkbox" id="area6" />
+                <label for="area6">Guidance on major choice</label>
+              </p>
+            </div>
+          </div>
+          <br>
+          {{/if}}
           <a id="submit-student" class="waves-effect waves-light btn">Submit</a>
         </form>
       </div>

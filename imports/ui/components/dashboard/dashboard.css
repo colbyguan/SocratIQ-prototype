@@ -1,3 +1,6 @@
 .card .card-content .mentor-title {
   display: inline-block;
 }
+#accept-student {
+  right: 80px;
+}

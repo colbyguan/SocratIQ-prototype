@@ -2,7 +2,7 @@
 {
   student_id:
   mentor_id: 
-  status: 
+  status: 'requested' | 'matched'
 }
 */
 import { Meteor } from 'meteor/meteor';
@@ -36,6 +36,17 @@ Meteor.methods({
       throw new Meteor.Error('Already requested');
     }
   },
+  'match.accept'(student_id) {
+    requireLogin(Meteor.userId());
+    check(student_id, String);
+
+    return Matches.update({
+      student_id,
+      mentor_id: Meteor.userId()
+    }, {$set: {
+      status: 'matched'
+    }});
+  },
   'match.remove'(mentor_id) {
     requireLogin(Meteor.userId());
     check(mentor_id, String);
@@ -43,6 +54,15 @@ Meteor.methods({
     return Matches.remove({
       student_id: Meteor.userId(),
       mentor_id,
+    });
+  },
+  'match.removeByStudent'(student_id) {
+    requireLogin(Meteor.userId());
+    check(student_id, String);
+
+    return Matches.remove({
+      student_id: student_id,
+      mentor_id: Meteor.userId()
     });
   },
 });

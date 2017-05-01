@@ -16,28 +16,48 @@
     </div>
   </div>
   {{/if}}
+  {{#unless showWelcome}}
   <div class="section">
-  {{#if showStudentForm}}
-    {{> student_form}}
-  {{/if}}
-  {{#if showMentorForm}}
-    {{> mentor_form}}
-  {{/if}}
-  {{#if studentMode}}
-    <div class="row">
-      <div class="col s6">
-        <h5>Available Mentors</h5>
-        {{#each mentor in openMentors}}
-          {{> mentor_row mentor=mentor}}
-        {{/each}}
-      </div>
-      <div class="col s6">
-        <h5>Requested Mentors</h5>
-        {{#each mentor in requestedMentors}}
-          {{> mentor_row mentor=mentor requested=true}}
-        {{/each}}
-      </div>
-    </div>
-  {{/if}}
+    {{#if showStudentForm}}
+      {{> student_form}}
+    {{else}}
+      {{#if showMentorForm}}
+        {{> mentor_form}}
+      {{else}}
+
+        {{#if studentMode}}
+          <div class="row">
+            <div class="col s6">
+              <h5>Available Mentors</h5>
+              {{#each mentor in openMentors}}
+                {{> mentor_row mentor=mentor}}
+              {{/each}}
+            </div>
+            <div class="col s6">
+              <h5>Requested Mentors</h5>
+              {{#each mentor in requestedMentors}}
+                {{> mentor_row mentor=mentor requested=true}}
+              {{/each}}
+            </div>
+          </div>
+        {{else}}
+          <div class="row">
+            <div class="col s6">
+              <h5>Students who have requested you</h5>
+              {{#each student in requestedStudents}}
+                {{> student_row student=student}}
+              {{/each}}
+            </div>
+            <div class="col s6">
+              <h5>Students you have accepted</h5>
+              {{#each student in matchedStudents}}
+                {{> student_row student=student matched=true}}
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/if}}
   </div>
+  {{/unless}}
 </template>
