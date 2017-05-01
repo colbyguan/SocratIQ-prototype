@@ -15,7 +15,6 @@ const extrakeyToLabel = {
 
 Template.student_row.helpers({
   extraInfo() {
-    console.log(this.student.extras);
     ret = [];
     if (this.student.extras) {
       const self = this;

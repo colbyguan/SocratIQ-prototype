@@ -6,6 +6,12 @@ Template.mentor_row.onRendered(function() {
   $('.tooltipped').tooltip({delay: 50});
 });
 
+const extrakeyToLabel = {
+  'gender': 'Mentor gender: ',
+  'ethnicity': 'Mentor ethnicity: ',
+  'generation': 'Generation as college student: '
+};
+
 Template.mentor_row.helpers({
   servicesList() {
     const s = [];
@@ -27,6 +33,20 @@ Template.mentor_row.helpers({
         student_id: Meteor.userId()
       }).status;
     }
+  },
+  extraInfo() {
+    ret = [];
+    if (this.mentor.extras) {
+      const self = this;
+      Object.keys(this.mentor.extras).forEach(function(key) {
+        var value = self.mentor.extras[key];
+        value = value.replace(/-/g, ' ');
+        value = value.charAt(0).toUpperCase() + value.slice(1)
+        s = extrakeyToLabel[key] + '<strong>' + value + '</strong>';
+        ret.push(s);
+      });
+    }
+    return ret;
   }
 });
 

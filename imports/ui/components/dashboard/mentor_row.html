@@ -11,6 +11,10 @@
       <a id="request-mentor" class="btn-floating halfway-fab waves-effect waves-light blue btn tooltipped" data-position="top" data-delay="50" data-tooltip="Request this mentor"><i class="material-icons">add</i></a>
       {{/if}}
       <p class="mentor-header"><strong>{{mentor.year}} year</strong> at <strong>{{mentor.institution}}</strong> studying <strong>{{mentor.major}}</strong></p>
+      <br>
+      {{#each info in extraInfo}}
+        <p>{{{info}}}</p>
+      {{/each}}
     </div>
     <div class="card-action">
       {{#each service in servicesList}}

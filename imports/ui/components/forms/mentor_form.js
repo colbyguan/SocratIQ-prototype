@@ -29,8 +29,8 @@ Template.mentor_form.events({
     const $zip = $('#mentor-zip');
     const $inst = $('#mentor-inst');
     const $gender = $('#mentor-gender');
-    const $sameEthnicity = $('#mentor-same-eth');
     const $ethnicity = $('#mentor-eth');
+    const $generation = $('#mentor-gen');
     const services = [];
     $('#mentor-services input:checked').each(function() {
       services.push($(this).attr('name'));
@@ -62,7 +62,7 @@ Template.mentor_form.events({
         services,
         extras: {
           gender: $gender.val(),
-          sameEthnicity: $sameEthnicity.val(),
+          generation: $generation.val(),
           ethnicity: $ethnicity.val()
         }
       }, function(err) {

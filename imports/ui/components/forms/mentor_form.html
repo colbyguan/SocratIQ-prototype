@@ -60,20 +60,20 @@
                 <option value="neutral">Neutral</option>
                 <option value="other">Other</option>
               </select>
-              <label>I'd prefer a student who is:</label>
+              <label>Your gender</label>
             </div>
             <div class="input-field col s12 m4">
-              <select id="mentor-same-eth">
-                <option value="" disabled selected>Choose a preference</option>
-                <option value="agree">Agree</option>
-                <option value="disagree">Disagree</option>
-                <option value="neutral">Neutral</option>
+                <input id="mentor-eth" type="text" class="validate">
+                <label for="mentor-eth">Race/ethnicity?</label>
+            </div>
+            <div class="input-field col s12 m4">
+              <select id="mentor-gen">
+                <option value="" disabled selected>Choose an option</option>
+                <option value="first-generation">First generation</option>
+                <option value="second-generation">Second generation</option>
+                <option value="more-than-second-generation">Third or more</option>
               </select>
-              <label>I'd prefer a student who is of the same race/ethnicity as me:</label>
-            </div>
-            <div class="input-field col s12 m4">
-              <input id="mentor-eth" type="text" class="validate">
-              <label for="zip">Race/ethnicity, if relevant?</label>
+              <label>First generation college student?</label>
             </div>
           </div>
           {{/if}}
