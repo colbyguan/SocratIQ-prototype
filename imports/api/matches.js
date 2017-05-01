@@ -35,5 +35,14 @@ Meteor.methods({
     } else {
       throw new Meteor.Error('Already requested');
     }
-  }
+  },
+  'match.remove'(mentor_id) {
+    requireLogin(Meteor.userId());
+    check(mentor_id, String);
+
+    return Matches.remove({
+      student_id: Meteor.userId(),
+      mentor_id,
+    });
+  },
 });

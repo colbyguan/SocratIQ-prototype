@@ -38,6 +38,19 @@ Template.mentor_row.events({
       } else {
         Materialize.toast('Requested mentor', 3000);
       }
+      $('.material-tooltip').hide();
+      $('.tooltipped').tooltip({delay: 50});
+    });
+  },
+  'click #remove-mentor'() {
+    Meteor.call('match.remove', this.mentor.user_id, function(err) {
+      if (err) {
+        Materialize.toast(err.error, 3000);
+      } else {
+        Materialize.toast('Removed request', 3000);
+      }
+      $('.material-tooltip').hide();
+      $('.tooltipped').tooltip({delay: 50});
     });
   }
 });
